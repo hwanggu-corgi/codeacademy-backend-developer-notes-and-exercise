@@ -78,4 +78,28 @@
     \item Javascript code is written to file \texttt{.js} extension
 \end{itemize}
 
+\subsection{Accessing the Process Object}
+\begin{itemize}
+    \item Node has a global \texttt{process} object with useful methods and information about the current process.
+    \begin{itemize}
+        \item \texttt{process.env} property is an object which stores and controls information about the environment in which the process is currently running
+        \begin{itemize}
+            \item \texttt{PWD} - holds a string with the directory where the current process is located
+            \item \texttt{NODE\_ENV} - holds a value of either production or development
+
+            \bigskip
+
+            \underline{\textbf{Example}}
+
+    \begin{lstlisting}
+    if (process.env.NODE_ENV === 'development'){
+        console.log('Testing! Testing! Does everything work?');
+    }
+    \end{lstlisting}
+
+            \item \texttt{process.memoryUsage()} returns information on the CPU demands of the current process.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
 \end{document}
