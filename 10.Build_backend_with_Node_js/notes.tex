@@ -197,5 +197,40 @@
 \end{itemize}
 
 \subsection{Asynchronous JavaScript with Node.js}
+\begin{itemize}
+    \item Node was designed to use an event loop like the one used in browser-based JavaScript execution
+    \item The event-loop enables asynchronous actions to be handled in a non-blocking way.
+    \begin{itemize}
+        \item APIs trigger the subscription to and \ul{emitting of events to signal the completion of the operation}
+    \end{itemize}
+
+    \underline{\textbf{Example}}
+
+    \bigskip
+
+    \begin{lstlisting}
+    let keepGoing = true;
+
+    let callback = () => {
+        keepGoing = false;
+    };
+
+    setTimeout(callback, 1000); // Run callback after 1000ms
+
+    while(keepGoing === true) {
+        console.log(`This is the song that never ends. Yes, it just goes on and on my friends. Some people started singing it, not knowing what it was, and they'll continue singing it forever just because...`)
+    };
+    \end{lstlisting}
+
+    \begin{itemize}
+        \item The while loop will continue forever
+        \item Why? because no signal has been sent
+        \item To resolve this issue, replace \texttt{setTimeout} with \texttt{setTimeInterval}
+    \end{itemize}
+    \item \texttt{Promise}, \texttt{async ... await}
+    \begin{itemize}
+        \item modern way of handling asynchronous tasks
+    \end{itemize}
+\end{itemize}
 
 \end{document}
