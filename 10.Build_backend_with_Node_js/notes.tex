@@ -106,6 +106,14 @@
             \item second element in the array is the path to the file that’s running
             \item following elements will be any command line arguments provided when the process was initiated (like C)!!!
         \end{itemize}
+
+    \begin{lstlisting}
+    node myProgram.js testing several features
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    console.log(process.argv[3]); // Prints 'several'
+    \end{lstlisting}
     \end{itemize}
 \end{itemize}
 
