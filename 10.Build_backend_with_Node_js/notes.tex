@@ -170,13 +170,30 @@
     \end{lstlisting}
 \end{itemize}
 
-\section{Event-Driven Architecture}
+\subsection{Event-Driven Architecture}
 \begin{itemize}
     \item Node is often described as having event-driven architecture.
     \begin{itemize}
         \item This feels so much like threaded programming
     \end{itemize}
     \item event emitter instance has an \texttt{.on()} method which assigns a listener callback function to a named event.
+    \begin{itemize}
+        \item first argument - the name of the event as a string
+        \item second argument - the listener callback function
+    \end{itemize}
+
+    \begin{lstlisting}
+
+    let newUserListener = (data) => {
+        console.log(`We have a new user: ${data}.`);
+    };
+
+    // Assign the newUserListener function as the listener callback for 'new user' events
+    myEmitter.on('new user', newUserListener)
+
+    // Emit a 'new user' event
+    myEmitter.emit('new user', 'Lily Pad') //newUserListener will be invoked with 'Lily Pad'
+    \end{lstlisting}
 \end{itemize}
 
 \end{document}
