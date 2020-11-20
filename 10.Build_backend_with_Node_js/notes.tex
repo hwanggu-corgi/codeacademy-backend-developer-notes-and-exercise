@@ -121,12 +121,36 @@
 \begin{itemize}
     \item \textbf{Modularity} is a software design technique where one program has distinct parts each providing a single piece of the overall functionality.
     \begin{itemize}
-        \item \textbf{Modules} come together to build a cohesive whole
         \item Is essential when creating scalable programs
         \begin{itemize}
             \item incorporate libraries and frameworks and separate the program’s concerns into manageable chunks
         \end{itemize}
     \end{itemize}
+    \item \textbf{Modules} come together to build a cohesive whole
+    \begin{itemize}
+        \item is imported using \texttt{require()}
+
+    \begin{lstlisting}
+    // Require in the 'events' core module:
+    let events = require('events');
+    \end{lstlisting}
+
+        \item is exported using \texttt{module.exports}
+
+    \begin{lstlisting}
+    module.exports = class Dog {
+
+        constructor(name) {
+            this.name = name;
+        }
+
+        praise() {
+            return `Good dog, ${this.name}!`;
+        }
+    };
+    \end{lstlisting}
+    \end{itemize}
+
 \end{itemize}
 
 \end{document}
