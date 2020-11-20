@@ -154,7 +154,26 @@
 
 \subsection{Node Package Manager}
 \begin{itemize}
-    \item
+    \item NPM, which stands for Node Package Manager
+\end{itemize}
+
+\subsection{Event-Driven Architecture}
+\begin{itemize}
+    \item Node is often described as having event-driven architecture
+    \item Node provides an \texttt{EventEmitter} class which we can access by requiring in the events core module
+    \begin{lstlisting}
+    // Require in the 'events' core module
+    let events = require('events');
+
+    // Create an instance of the EventEmitter class
+    let myEmitter = new events.EventEmitter();
+    \end{lstlisting}
+\end{itemize}
+
+\section{Event-Driven Architecture}
+\begin{itemize}
+    \item Node is often described as having event-driven architecture.
+    \item event emitter instance has an \texttt{.on()} method which assigns a listener callback function to a named event.
 \end{itemize}
 
 \end{document}
