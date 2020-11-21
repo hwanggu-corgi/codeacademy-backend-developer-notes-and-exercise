@@ -271,7 +271,27 @@
             \item sets promises' resolved value to be the arguement passed to \texttt{resolve}
         \end{itemize}
         \item \texttt{reject()}
+        \begin{itemize}
+            \item takes a reason or error as an argument
+            \item invoke causes \texttt{reject()} to change the promise’s status from \texttt{pending} to \texttt{rejected}
+        \end{itemize}
     \end{itemize}
+
+    \bigskip
+
+    \underline{\textbf{Example}}
+
+    \begin{lstlisting}
+    const executorFunction = (resolve, reject) => {
+        if (someCondition) {
+            resolve('I resolved!');
+        } else {
+            reject('I rejected!');
+        }
+    }
+    const myFirstPromise = new Promise(executorFunction);
+    \end{lstlisting}
+
 
 \end{itemize}
 
