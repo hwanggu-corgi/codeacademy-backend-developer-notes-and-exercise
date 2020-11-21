@@ -396,7 +396,70 @@
         \item second \texttt{.then()} is invoked to handle the logic for the second promise settling.
         \item Inside second \texttt{.then()}, we have a success handler which will log the second promise’s resolved value to the console.
     \end{itemize}
+\end{itemize}
 
+    \begin{lstlisting}
+    const {checkInventory, processPayment, shipOrder} = require('./library.js');
+
+    const order = {
+        items: [['sunglasses', 1], ['bags', 2]],
+        giftcardBalance: 79.82
+    };
+
+    checkInventory(order)
+    .then((resolvedValueArray) => {
+        // Write the correct return statement here:
+        return processPayment(resolvedValueArray);
+    })
+    .then((resolvedValueArray) => {
+        // Write the correct return statement here:
+        return shipOrder(resolvedValueArray);
+    })
+    .then((successMessage) => {
+        console.log(successMessage);
+    })
+    .catch((errorMessage) => {
+        console.log(errorMessage);
+    });
+
+    \end{lstlisting}
+
+\subsection{Avoiding Common Mistakes}
+\begin{itemize}
+    \item \textbf{Mistake 1:} Nesting promises instead of chaining them.
+    \begin{itemize}
+        \item Works fine
+        \item Imagine if we are handling five or then promises
+    \end{itemize}
+    \begin{lstlisting}
+    returnsFirstPromise()
+    .then((firstResolveVal) => {
+        return returnsSecondValue(firstResolveVal)
+        .then((secondResolveVal) => {
+            console.log(secondResolveVal);
+        })
+    })
+    \end{lstlisting}
+
+    \item \textbf{Mistake 2:} Forgetting to return a promise.
+    \begin{itemize}
+        \item
+    \end{itemize}
+
+    \begin{lstlisting}
+    returnsFirstPromise()
+    .then((firstResolveVal) => {
+        returnsSecondValue(firstResolveVal)
+    })
+    .then((someVal) => {
+        console.log(someVal);
+    })
+    \end{lstlisting}
+
+    \begin{itemize}
+        \item \texttt{returnsFirstPromise()} which returns a promise.
+        \item invoke a second \texttt{.then()}. Since we didn’t return, this \texttt{.then()} is invoked on a promise with the \ul{same settled value} as the original promise
+    \end{itemize}
 \end{itemize}
 
 \end{document}
