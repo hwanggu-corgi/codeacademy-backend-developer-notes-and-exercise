@@ -259,6 +259,20 @@
     const myFirstPromise = new Promise(executorFunction);
     \end{lstlisting}
 
+    \item \texttt{Promise} constructor method takes a function parameter called the
+    \texttt{executor} function which runs automatically when the constructor is called
+
+    \item The \texttt{executor} function has has two function parameters
+    \begin{itemize}
+        \item \texttt{resolve()}
+        \begin{itemize}
+            \item is a function with one arguement
+            \item invoke causes the promise's status to change from \texttt{pending} to \texttt{fulfilled}
+            \item sets promises' resolved value to be the arguement passed to \texttt{resolve}
+        \end{itemize}
+        \item \texttt{reject()}
+    \end{itemize}
+
 \end{itemize}
 
 \end{document}
