@@ -462,4 +462,65 @@
     \end{itemize}
 \end{itemize}
 
+    \begin{lstlisting}
+    const {checkInventory, processPayment, shipOrder} = require('./library.js');
+
+    const order = {
+        items: [['sunglasses', 1], ['bags', 2]],
+        giftcardBalance: 79.82
+    };
+
+    // Refactor the code below:
+
+    checkInventory(order)
+        .then((resolvedValueArray) => {
+            return processPayment(resolvedValueArray);
+        })
+        .then((resolvedValueArray) => {
+            return shipOrder(resolvedValueArray);
+        })
+        .then((successMessage) => {
+            console.log(successMessage);
+        });
+    \end{lstlisting}
+
+\subsection{Using Promise.all()}
+
+\begin{itemize}
+    \item promise composition is a great way to handle situations where asynchronous
+    operations \ul{depend on each other} or \ul{execution order matters}
+    \item What if we don't care about order? - make simple using \texttt{Promise.all()}
+    \item \texttt{Promise.all()} accepts an array of promises as its argument and returns a single promise. That single promise will settle in one of two ways:
+    \begin{itemize}
+        \item If every promise in the argument array resolves, the single promise returned from Promise.all() will resolve with an array containing the resolve value from each promise in the argument array.
+        \item If any promise from the argument array rejects, the single promise returned from Promise.all() will immediately reject with the reason that promise rejected.
+        \begin{itemize}
+            \item This behavior is sometimes referred to as \textbf{failing fast.}
+        \end{itemize}
+    \end{itemize}
+
+    \underline{\textbf{Example}}
+
+    \begin{lstlisting}
+    let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
+
+    myPromises
+        .then((arrayOfValues) => {
+        console.log(arrayOfValues);
+        })
+        .catch((rejectionReason) => {
+        console.log(rejectionReason);
+        });
+    \end{lstlisting}
+
+    \begin{itemize}
+        \item \texttt{myPromises} assigned to invoking \texttt{Promise.all()}.
+        \item \texttt{Promise.all()} has an array of three promises— the returned values from functions.
+        \item \texttt{.then()} with a success handler which will print the array of resolved values if each promise resolves successfully.
+        \item \texttt{.catch()} with a failure handler which will print the \ul{first rejection} message if any promise rejects.
+
+    \end{itemize}
+
+\end{itemize}
+
 \end{document}
