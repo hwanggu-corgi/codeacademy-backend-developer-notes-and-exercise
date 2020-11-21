@@ -350,7 +350,53 @@
 
 \subsection{Using catch() with Promises}
 \begin{itemize}
-    \item
+    \item \texttt{separation of concerns} - one way to write cleaner code
+    \item Javascript doesn't mind whitespace
+    \item \texttt{.catch()} function takes only one argument, onRejected
+
+    \bigskip
+
+    \underline{\textbf{Example}}
+
+    \begin{lstlisting}
+    prom
+    .then((resolvedValue) => {
+        console.log(resolvedValue);
+    })
+    .catch((rejectionReason) => {
+        console.log(rejectionReason);
+    });
+    \end{lstlisting}
+
+\end{itemize}
+
+\subsection{Chaining Multiple Promises}
+\begin{itemize}
+    \item \texttt{composition} - the process of chaining promises together
+    \item Promise is designed with composition in mind
+
+    \bigskip
+
+    \underline{\textbf{Example}}
+
+    \begin{lstlisting}
+    firstPromiseFunction()
+    .then((firstResolveVal) => {
+        return secondPromiseFunction(firstResolveVal);
+    })
+    .then((secondResolveVal) => {
+        console.log(secondResolveVal);
+    });
+    \end{lstlisting}
+
+    \begin{itemize}
+        \item We invoke a function \texttt{firstPromiseFunction()} which returns a promise.
+        \item \texttt{.then()} is invoked with an anonymous function as the success handler
+        \item Inside the success handler we return a new promise— the result of invoking a second function, \texttt{secondPromiseFunction()} with the first promise’s resolved value.
+        \item second \texttt{.then()} is invoked to handle the logic for the second promise settling.
+        \item Inside second \texttt{.then()}, we have a success handler which will log the second promise’s resolved value to the console.
+    \end{itemize}
+
 \end{itemize}
 
 \end{document}
