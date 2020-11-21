@@ -296,7 +296,38 @@
 
 \subsection{The Node setTimeout() Function}
 \begin{itemize}
-    \item
+
+    \item Rather than constructing promises, you’ll be handling \texttt{Promise} objects returned to you as the result of an asynchronous operation
+    \begin{itemize}
+        \item It will start off pending but settle eventually.
+    \end{itemize}
+
+    \item \texttt{setTimeout()}
+    \begin{itemize}
+        \item Is a node API
+        \item Has two parameters
+        \begin{itemize}
+            \item a callback function
+            \item a delay in milliseconds.
+        \end{itemize}
+
+        \begin{lstlisting}
+        const executorFunction = (resolve, reject) => {
+            if (someCondition) {
+                resolve('I resolved!');
+            } else {
+                reject('I rejected!');
+            }
+        }
+        const myFirstPromise = new Promise(executorFunction);
+        \end{lstlisting}
+
+    \end{itemize}
+
+    \item the embedded code will exectue after said time (not exactly at the time)
+    \begin{itemize}
+        \item because the function within is added to a line of code waiting to be run
+    \end{itemize}
 \end{itemize}
 
 \end{document}
