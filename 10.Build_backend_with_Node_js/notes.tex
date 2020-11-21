@@ -250,4 +250,15 @@
     \item \textbf{Rejected:} The initial state— the operation has not completed yet.
 \end{itemize}
 
+\subsection{Constructing a Promise Object}
+\begin{itemize}
+    \item use the \texttt{new} keyword and the \texttt{Promise} constructor method
+
+    \begin{lstlisting}
+    const executorFunction = (resolve, reject) => { };
+    const myFirstPromise = new Promise(executorFunction);
+    \end{lstlisting}
+
+\end{itemize}
+
 \end{document}
