@@ -629,6 +629,100 @@
 
     \textbf{Answer:} undefined
 
+    \item True or False: promise1 and promise2 both produce the same output.
+
+    \begin{lstlisting}
+    const examplePromise1 = new Promise((resolve, reject) => { reject('Uh-oh!') });
+    const examplePromise2 = new Promise((resolve, reject) => { reject('Uh-oh!') });
+
+    const onFulfill = value => {console.log(value)};
+    const onReject = reason => {console.log(reason)};
+
+    const promise1 = examplePromise1.then(onFulfill, onReject);
+
+    const promise2 = examplePromise2.then(onFulfill).catch(onReject);
+    \end{lstlisting}
+
+    \bigskip
+
+    \textbf{Answer:} True
+
+    \item True or False: promise1 and promise2 both produce the same output.
+
+    \begin{lstlisting}
+    const examplePromise1 = new Promise((resolve, reject) => { reject('Uh-oh!') });
+    const examplePromise2 = new Promise((resolve, reject) => { reject('Uh-oh!') });
+
+    const onFulfill = value => {console.log(value)};
+    const onReject = reason => {console.log(reason)};
+
+    const promise1 = examplePromise1.then(onFulfill, onReject);
+
+    const promise2 = examplePromise2.then(onFulfill).catch(onReject);
+    \end{lstlisting}
+
+    \bigskip
+
+    \textbf{Answer:} True
+
+    \item Which one of the following is NOT a state that a Promise resolves to?
+
+    \bigskip
+
+    \textbf{Answer:} Undefined
+
+    \item What state will this promise be in after 0 seconds?
+
+    \bigskip
+
+    \begin{lstlisting}
+    const examplePromise = () => {
+        return new Promise((resolve, reject) => {
+            if (true) {
+            setTimeout( () => resolve('success'), 3000);
+            } else {
+            setTimeout( () => resolve('failed'), 5000);
+            }
+        });
+    };
+    \end{lstlisting}
+
+
+    \textbf{Answer:} Pending
+
+    \item What will be printed to the console after running the code provided?
+
+    \bigskip
+
+    \begin{lstlisting}
+    let link = state => {
+        return new Promise(function(resolve, reject) {
+            if (state) {
+            resolve('success');
+            } else {
+            reject('error');
+            }
+        });
+        }
+
+        let promiseChain = link(true);
+
+        promiseChain
+        .then( data => {
+            console.log(data + " 1");
+            return link(true);
+        })
+        .then( data => {
+            console.log(data+ " 2");
+            return link(true);
+        });
+    \end{lstlisting}
+
+
+    \textbf{Answer:}
+
+    success1\\
+    success2
 
 \end{enumerate}
 
