@@ -575,6 +575,61 @@
     \bigskip
 
     \textbf{Answer:} function1
+
+    \item What is the fulfilled value of \texttt{Promise.all()}?
+
+    \bigskip
+
+    \textbf{Answer:} An array
+
+    \item What is the fulfilled value of \texttt{Promise.all()}?
+
+    \bigskip
+
+    \textbf{Answer:} An array
+
+    \item What value is printed to the console?
+
+    \begin{lstlisting}
+    const asyncHello = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1000, 'Hello!');
+    });
+
+    console.log(typeof asyncHello);
+    \end{lstlisting}
+
+    \bigskip
+
+    \textbf{Answer:} An object
+
+    \item True or False: The \texttt{.then()} method returns a Promise.
+    \bigskip
+
+    \textbf{Answer:} True
+
+    \item What is value of the argument that is passed to the onReject()?
+
+
+    \begin{lstlisting}
+    let onFulfill = value => {console.log(value)};
+    let onReject = reason => {console.log(reason)};
+
+    const promise =  new Promise( (resolve, reject) => {
+        if (false) {
+        resolve('success value');
+        } else {
+        reject();
+        }
+    });
+
+    promise.then(onFulfill, onReject);
+    \end{lstlisting}
+
+    \bigskip
+
+    \textbf{Answer:} undefined
+
+
 \end{enumerate}
 
 \end{document}
