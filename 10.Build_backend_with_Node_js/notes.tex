@@ -547,7 +547,34 @@
 
 \subsection{Review}
 \begin{itemize}
-    \item
+    \item Promises can be in one of three states: pending, resolved, or rejected.
+    \item \texttt{.then()} is a success handler callback containing the logic for what should happen if a promise resolves
+    \item \texttt{.catch()} is a failure handler callback containing the logic for what should happen if a promise rejects.
+    \item \texttt{setTimeout()} is a Node function which delays the execution of a
+    callback function using the event-loop
+    \item To take advantage of concurrency, we can use \texttt{Promise.all()}
 \end{itemize}
+
+
+\subsection{Quiz}
+\begin{enumerate}
+    \item How many parameters does a Promise constructor take?
+    \bigskip
+
+    \texttt{const example = new Promise( ? ? ? );}
+
+    \bigskip
+
+    \textbf{Answer:} 1
+
+    \item Which of the executor function’s parameter is called if the asynchronous task completes successfully?
+    \bigskip
+
+    \texttt{const example = new Promise( (function1, function2) => { . . . } );}
+
+    \bigskip
+
+    \textbf{Answer:} function1
+\end{enumerate}
 
 \end{document}
