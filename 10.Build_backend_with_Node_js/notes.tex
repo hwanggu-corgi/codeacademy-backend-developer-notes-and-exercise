@@ -738,4 +738,42 @@
     \item \texttt{async ... await} is a syntatic sugar
 \end{itemize}
 
+\subsection{The Async Keyword}
+\begin{itemize}
+    \item \texttt{async} keyword is used to write functions that handle asynchronous actions
+    \item Syntax
+    \begin{itemize}
+        \item Original
+
+    \begin{lstlisting}
+    async function myFunc() {
+        // Function body here
+    };
+
+    myFunc();
+    \end{lstlisting}
+
+        \item Function Expression
+    \end{itemize}
+
+    \begin{lstlisting}
+    const myFunc = async () => {
+        // Function body here
+    };
+
+    myFunc();
+    \end{lstlisting}
+
+    \item \texttt{async} function always returns a promise
+    \begin{itemize}
+        \item We use traditional promise syntax
+        \begin{itemize}
+            \item \texttt{.then()}
+            \item \texttt{.catch}
+            \item \texttt{async}
+        \end{itemize}
+
+    \end{itemize}
+\end{itemize}
+
 \end{document}
