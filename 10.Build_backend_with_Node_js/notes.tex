@@ -772,8 +772,46 @@
             \item \texttt{.catch}
             \item \texttt{async}
         \end{itemize}
+    \end{itemize}
 
+    \item Returns in one of three ways
+    \begin{itemize}
+        \item \texttt{undefined} - If there’s nothing returned from the function
+        \item If non-promise value is returned from function, it will return a promise resolved to the value
+        \item If promise is returned from the function, it will simply return that value
     \end{itemize}
 \end{itemize}
+
+\begin{lstlisting}
+    function withConstructor(num){
+        return new Promise((resolve, reject) => {
+            if (num === 0){
+            resolve('zero');
+            } else {
+            resolve('not zero');
+            }
+        })
+    }
+
+    withConstructor(0)
+        .then((resolveValue) => {
+            console.log(` withConstructor(0) returned a promise which resolved to: ${resolveValue}.`);
+    })
+
+    // Write your code below:
+
+
+
+
+
+
+    // Leave this commented out until step 3:
+    /*
+    withAsync(100)
+    .then((resolveValue) => {
+        console.log(` withAsync(100) returned a promise which resolved to: ${resolveValue}.`);
+    })
+    */
+\end{lstlisting}
 
 \end{document}
