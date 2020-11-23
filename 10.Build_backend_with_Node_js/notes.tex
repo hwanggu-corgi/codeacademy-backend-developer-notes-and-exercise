@@ -822,6 +822,22 @@
 \subsection{The await Operator}
 \begin{itemize}
     \item \texttt{async} keyword, by itself, it doesn’t do much
+    \item \texttt{await} keyword, is used inside an \texttt{async} function
+    \item \texttt{await} \ul{halts, or pauses, the execution} of our \texttt{async} function until a given promise is resolved
+
+    \bigskip
+
+    \underline{\textbf{Example}}
+
+    \begin{lstlisting}
+    async function asyncFuncExample(){
+        let resolvedValue = await myPromise();
+        console.log(resolvedValue);
+    }
+
+    asyncFuncExample(); // Prints: I am resolved now!
+    \end{lstlisting}
+
 \end{itemize}
 
 \end{document}
