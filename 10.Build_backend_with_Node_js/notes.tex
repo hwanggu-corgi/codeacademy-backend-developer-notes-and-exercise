@@ -1000,10 +1000,40 @@
     // Write your code below:
 
     async function hostDinnerParty() {
-
+      try {
+        let dinner = await cookBeanSouffle();
+        console.log(`${dinner} is served!`);
+      } catch (error) {
+        console.log(error);
+        console.log('Ordering a pizza!');
+      }
     }
 
+    hostDinnerParty();
 \end{lstlisting}
 
+\subsection{Handling Independent Promises}
+\begin{itemize}
+    \item \texttt{async await} takes advantage of concurrency
+    \item Here the code works synchronously. Wait for \texttt{firstAsyncThing} and then \texttt{secondAsyncThing}
+    \begin{lstlisting}
+        async function waiting() {
+        const firstValue = await firstAsyncThing();
+        const secondValue = await secondAsyncThing();
+        console.log(firstValue, secondValue);
+        }
+    \end{lstlisting}
+
+    \item Here, \texttt{firstAsyncThing} and \texttt{secondAsyncThing} are called
+    asynchronously and waits in \texttt{console.log} until all are ready
+    \begin{lstlisting}
+        async function concurrent() {
+        const firstPromise = firstAsyncThing();
+        const secondPromise = secondAsyncThing();
+        console.log(await firstPromise, await secondPromise);
+        }
+    \end{lstlisting}
+
+\end{itemize}
 
 \end{document}
