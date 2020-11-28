@@ -1058,8 +1058,15 @@
       let proteinPromise = bakeChicken();
       let sidePromise = cookBeans();
 
-      console.log(...);
+      console.log(`Dinner is served. We're having ${await vegetablePromise}, ${await starchPromise}, ${await proteinPromise}, and ${await sidePromise}.`);
     }
+
+    serveDinner();
 \end{lstlisting}
+
+\subsection{Await Promise.all()}
+\begin{itemize}
+    \item executes multiple promises simultaneously
+\end{itemize}
 
 \end{document}
