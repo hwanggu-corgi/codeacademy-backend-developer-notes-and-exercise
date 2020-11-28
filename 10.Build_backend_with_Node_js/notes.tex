@@ -865,7 +865,49 @@
 \subsection{Writing async Functions}
 \begin{itemize}
     \item \texttt{await} keyword halts the execution of an async function until a promise is no longer pending
+
+    \begin{lstlisting}
+    let myPromise = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+            resolve('Yay, I resolved!')
+            }, 1000);
+        });
+    }
+
+    async function noAwait() {
+        let value = myPromise();
+       console.log(value);
+    }
+
+    async function yesAwait() {
+        let value = await myPromise();
+        console.log(value);
+    }
+
+    noAwait(); // Prints: Promise { <pending> }
+    yesAwait(); // Prints: Yay, I resolved!
+    \end{lstlisting}
+
+    \begin{itemize}
+        \item \texttt{noAwait()} function logs Promise { <pending> } to the console
+        \item \texttt{yesAwait()} returns resolved value of promise
+        \item IMPORTANT!! \texttt{await} operator returns the resolved value of a promise
+    \end{itemize}
 \end{itemize}
+
+\begin{lstlisting}
+    const shopForBeans = require('./library.js');
+
+    function getBeans() {
+      console.log(`1. Heading to the store to buy beans...`);
+      let value = shopForBeans();
+      console.log(`3. Great! I'm making ${value} beans for dinner tonight!`);
+    }
+
+    getBeans();
+\end{lstlisting}
+
 
 
 \end{document}
