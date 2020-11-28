@@ -959,6 +959,51 @@
 \begin{itemize}
     \item \texttt{.catch()} is used with a long promise chain - there is no
     indication of where in the chain the error was thrown
+    \item \texttt{async ... await} it's easier to debug
+
+    \underline{\textbf{Example}}
+
+    \begin{lstlisting}
+        async function usingTryCatch() {
+            try {
+              let resolveValue = await asyncFunction('thing that will fail');
+              let secondValue = await secondAsyncFunction(resolveValue);
+            } catch (err) {
+              // Catches any errors in the try block
+              console.log(err);
+            }
+        }
+
+        usingTryCatch();
+    \end{lstlisting}
+
+    \underline{\textbf{Example 2 (same but using traditional catch)}}
+
+
+    \begin{lstlisting}
+    async function usingPromiseCatch() {
+        let resolveValue = await asyncFunction('thing that will fail');
+        }
+
+        let rejectedPromise = usingPromiseCatch();
+        rejectedPromise.catch((rejectValue) => {
+        console.log(rejectValue);
+        })
+    \end{lstlisting}
+
+    \item
 \end{itemize}
+
+\begin{lstlisting}
+    const cookBeanSouffle = require('./library.js');
+
+    // Write your code below:
+
+    async function hostDinnerParty() {
+
+    }
+
+\end{lstlisting}
+
 
 \end{document}
