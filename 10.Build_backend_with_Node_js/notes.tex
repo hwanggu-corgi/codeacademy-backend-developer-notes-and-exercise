@@ -1067,6 +1067,38 @@
 \subsection{Await Promise.all()}
 \begin{itemize}
     \item executes multiple promises simultaneously
+    \item returns a single promise
+    \item promise’s resolve value will be an array containing the resolved
+    values of each promise from the argument array
+    \item also has the benefit of \textbf{failing fast}
+    \begin{itemize}
+        \item meaning it won’t wait for the rest of the asynchronous actions to complete once any one has rejected.
+    \end{itemize}
+
+    \begin{lstlisting}
+        async function asyncPromAll() {
+            const resultArray = await Promise.all([asyncTask1(), asyncTask2(), asyncTask3(), asyncTask4()]);
+            for (let i = 0; i<resultArray.length; i++){
+              console.log(resultArray[i]);
+            }
+        }
+    \end{lstlisting}
 \end{itemize}
+
+\begin{lstlisting}
+    let {cookBeans, steamBroccoli, cookRice, bakeChicken} = require('./library.js')
+
+    // Write your code below:
+    async function serveDinnerAgain() {
+      const foodArray = await Promise.all([steamBroccoli(), cookRice(), bakeChicken(), cookBeans()]);
+
+      let vegetable = foodArray[0];
+      let starch =  foodArray[1];
+      let protein =  foodArray[2];
+      let side =  foodArray[3];
+
+      console.log(`Dinner is served. We're having ${vegetable}, ${starch}, ${protein}, and ${side}.`);
+    }
+\end{lstlisting}
 
 \end{document}
