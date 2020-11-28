@@ -908,6 +908,38 @@
     getBeans();
 \end{lstlisting}
 
+\subsection{Handling Dependent Promises}
+\begin{itemize}
+    \item The true beauty of async...await is when we have a series of asynchronous actions which depend on one another
 
+    \begin{lstlisting}
+        const shopForBeans = require('./library.js');
+
+        async function getBeans() {
+          console.log(`1. Heading to the store to buy beans...`);
+          let value = await shopForBeans();
+          console.log(`3. Great! I'm making ${value} beans for dinner tonight!`);
+        }
+
+        getBeans();
+    \end{lstlisting}
+
+    \item With native promise syntax, we use a chain of \texttt{.then()} functions
+    making sure to return correctly each one:
+
+
+    \begin{lstlisting}
+        function nativePromiseVersion() {
+            return FirstPromise()
+            .then((firstValue) => {
+                console.log(firstValue);
+                return returnsSecondPromise(firstValue);
+            })
+           .then((secondValue) => {
+                console.log(secondValue);
+            });
+        }
+    \end{lstlisting}
+\end{itemize}
 
 \end{document}
