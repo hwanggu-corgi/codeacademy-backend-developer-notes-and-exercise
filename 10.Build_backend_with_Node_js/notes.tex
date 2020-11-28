@@ -1034,6 +1034,32 @@
         }
     \end{lstlisting}
 
+    \item to execute fully in parallel, we must use individual \texttt{.then()} functions and avoid halting our execution with await.
+
+    \begin{lstlisting}
+        async function concurrent() {
+        const firstPromise = firstAsyncThing();
+        firstPromise.then((resolved) => {
+            ...
+        });
+        const secondPromise = secondAsyncThing();
+        console.log(await firstPromise, await secondPromise);
+        }
+    \end{lstlisting}
 \end{itemize}
+
+\begin{lstlisting}
+    let {cookBeans, steamBroccoli, cookRice, bakeChicken} = require('./library.js')
+
+    // Write your code below:
+    async function serveDinner() {
+      let vegetablePromise = steamBroccoli();
+      let starchPromise = cookRice();
+      let proteinPromise = bakeChicken();
+      let sidePromise = cookBeans();
+
+      console.log(...);
+    }
+\end{lstlisting}
 
 \end{document}
