@@ -1308,5 +1308,40 @@
      fs.readFile('./finalFile.txt', 'utf-8', readDataCallback);
 \end{lstlisting}
 
+\subsection{Readable Streams}
+\begin{itemize}
+    \item data is sequentially, piece by piece, in what is known as a \textbf{stream}
+    \begin{itemize}
+        \item preferable since you don’t need enough RAM to process all the data
+    \end{itemize}
+    \item To read files line-by-line, we can use the \texttt{.createInterface()} method from the \texttt{readline} core module
+    \begin{itemize}
+        \item \texttt{.createInterface()} returns an \texttt{EventEmitter} set up to emit 'line' events
+        \item \texttt{fs.createReadStream(...)} creates a stream from the ... file.
+    \end{itemize}
+
+\begin{lstlisting}
+    const readline = require('readline');
+    const fs = require('fs');
+
+    const myInterface = readline.createInterface({
+      input: fs.createReadStream('text.txt')
+    });
+
+    myInterface.on('line', (fileLine) => {
+      console.log(`The line read: ${fileLine}`);
+    });
+\end{lstlisting}
+
+\end{itemize}
+
+\begin{lstlisting}
+    const readline = require('readline');
+    const fs = require('fs');
+
+    const myInterface = readline.createInterface({
+      input: fs.createReadstream('shoppingList.txt')
+    })
+\end{lstlisting}
 
 \end{document}
