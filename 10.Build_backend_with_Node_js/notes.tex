@@ -1368,4 +1368,54 @@
     \item \texttt{.end()} indicates the end of a writable stream
 \end{itemize}
 
+\subsection{Create an HTTP Server}
+\begin{itemize}
+    \item Node was designed with back end development needs as a top priority
+    \item \texttt{http.createServer()} - returns an instance of an http.server
+    \begin{itemize}
+        \item has a method .listen() which causes the server to “listen” for incoming connections.
+        \item a custom callback function is passed (often referred to as the requestListener)
+    \end{itemize}
+
+\begin{lstlisting}
+    const fs = require('fs')
+
+    const fileStream = fs.createWriteStream('output.txt');
+
+    fileStream.write('This is the first line!');
+    fileStream.write('This is the second line!');
+    fileStream.end();
+\end{lstlisting}
+
+    \item how \texttt{requestListener} callback function works:
+    \begin{itemize}
+        \item expects two arguments: a \texttt{request} object and a \texttt{response} object.
+        \item Each time a request to the server is made, Node will invoke the provided \texttt{requestListener} callback function
+    \end{itemize}
+
+\begin{lstlisting}
+    const http = require('http');
+
+    let requestListener = (request, response) => {
+      response.writeHead(200, {'Content-Type': 'text/plain' });
+      response.write('Hello World!\n');
+      response.end();
+    };
+
+    const server = http.createServer(requestListener);
+
+    server.listen(3000);
+\end{lstlisting}
+\end{itemize}
+
+\begin{lstlisting}
+    const http = require('http');
+    let {requestListener} = require('./callbackFile.js');
+    const PORT = process.env.PORT || 4001;
+
+    const server = http.createServer(requestListener);
+
+    server.listen(PORT);
+\end{lstlisting}
+
 \end{document}
