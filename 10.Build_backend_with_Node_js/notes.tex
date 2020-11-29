@@ -1191,7 +1191,36 @@
 
 \subsection{User Input/Output}
 \begin{itemize}
-    \item In node.js, \texttt{console.log()} is a thin wrapper of \texttt{.stdout.write()} method of the \texttt{process} object
+    \item In node.js, \texttt{console.log()} is a thin wrapper of \texttt{.stdout.write()} method of the \texttt{process object}
+    \item \texttt{stdin.on()} - receive input from a user through the terminal
+
+    \begin{lstlisting}
+        process.stdin.on('data', (userInput) => {
+            let input = userInput.toString()
+            console.log(input)
+          });
+    \end{lstlisting}
+
+    \begin{itemize}
+        \item\texttt{.on()} can be used
+        \begin{itemize}
+            \item \texttt{process.stdin} is an instance of \texttt{EventEmitter}
+            \item \item 'data' event will be fired on when a user enters text into the terminal and hits enter
+        \end{itemize}
+    \end{itemize}
 \end{itemize}
+
+\begin{lstlisting}
+    let {testNumber} = require('./game.js');
+
+    process.stdout.write("I'm thinking of a number from 1 through 10. What do you think it is? \n(Write \"quit\" to give up.)\n\nIs the number ... ");
+
+    let playGame = (userInput) => {
+      let input = userInput.toString().trim();
+        testNumber(input);
+    };
+
+    process.stdin.on('data', playGame);
+\end{lstlisting}
 
 \end{document}
