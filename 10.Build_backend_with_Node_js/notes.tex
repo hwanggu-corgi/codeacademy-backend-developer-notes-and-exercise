@@ -1353,6 +1353,19 @@
 \subsection{Writable Streams}
 \begin{itemize}
     \item \texttt{fs.createWriteStream()} - create a writeable stream to a file
+
+
+\begin{lstlisting}
+    const fs = require('fs')
+
+    const fileStream = fs.createWriteStream('output.txt');
+
+    fileStream.write('This is the first line!');
+    fileStream.write('This is the second line!');
+    fileStream.end();
+\end{lstlisting}
+
+    \item \texttt{.end()} indicates the end of a writable stream
 \end{itemize}
 
 \end{document}
