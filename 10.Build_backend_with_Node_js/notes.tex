@@ -1225,7 +1225,7 @@
 
 \subsection{Errors}
 \begin{itemize}
-    \item node has a ll javascript errors
+    \item node has all javascript errors
     \begin{itemize}
         \item EvalError
         \item SyntaxError
@@ -1235,6 +1235,49 @@
         \item URIError
         \item Error
     \end{itemize}
+    \item \texttt{try...catch} statements can be used for error handling (but doesn't work with node's async behavior)
+    \item errors can be generated and be \texttt{thrown}
+
+    \begin{lstlisting}
+        const errorFirstCallback = (err, data)  => {
+            if (err) {
+              console.log(`There WAS an error: ${err}`);
+            } else {
+               // err was falsy
+                console.log(`There was NO error. Event data: ${data}`);
+            }
+        }
+    \end{lstlisting}
+
+    \item If the asynchronous task results in an error, it will be passed in as
+    the first argument to the callback function. If no error was thrown, the
+    first argument will be \texttt{undefined}.
 \end{itemize}
+
+\begin{lstlisting}
+    const api = require('./api.js');
+
+    // An error-first callback
+    let errorFirstCallback = (err, data) => {
+      if (err) {
+        console.log(`Something went wrong. ${err}\n`);
+      } else {
+        console.log(`Something went right. Data: ${data}\n`);
+      }
+    };
+
+    api.errorProneAsyncApi('problematic input', errorFirstCallback);
+\end{lstlisting}
+
+\subsection{Filesystem}
+\begin{itemize}
+    \item \texttt{sandboxing} - allows to have only limited access to a user’s filesystem
+    \begin{itemize}
+        \item Is important in javascript
+        \item Not important in node.js
+    \end{itemize}
+    \item
+\end{itemize}
+
 
 \end{document}
